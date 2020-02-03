@@ -1,0 +1,25 @@
+{
+  "name": "antd-button-fixTwoCNChar",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "build": "yarn parcel build index.html --public-url ./ --out-dir temp --no-source-maps"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/rinick/antd-mousedown-bug.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/rinick/antd-mousedown-bug/issues"
+  },
+  "homepage": "https://github.com/rinick/antd-mousedown-bug#readme",
+  "dependencies": {
+    "antd": "^4.0.0-rc.3",
+    "parcel-bundler": "^1.12.4",
+    "react": "^16.12.0",
+    "react-dom": "^16.12.0"
+  }
+}
