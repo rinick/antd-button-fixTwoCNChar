@@ -1,13 +1,14 @@
 import React, {useState} from 'react';
 import ReactDOM from 'react-dom';
-import {Checkbox, Button} from 'antd';
+import Button from '@material-ui/core/Button';
+import Checkbox from '@material-ui/core/Checkbox';
 
 const callbacks = new Set();
 
 const AsyncButton = (props) => {
     const [init, setInit] = useState(false);
     if (init) {
-        return <Button/>
+        return <Button>btn</Button>
     } else {
         // simulate async data
         callbacks.add(setInit);
