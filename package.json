@@ -4,8 +4,10 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "build-button": "yarn parcel build button.html --public-url ./ --out-dir www --no-source-maps",
-    "build-select": "yarn parcel build antd.html --public-url ./ --out-dir www --no-source-maps"
+    "build-antd": "yarn parcel build antd.html --public-url ./ --out-dir www --no-source-maps",
+    "run-antd": "yarn parcel antd.html --no-source-maps --open",
+    "build-mui": "yarn parcel build mui.html --public-url ./ --out-dir www --no-source-maps",
+    "run-mui": "yarn parcel mui.html --no-source-maps --open"
   },
   "repository": {
     "type": "git",
@@ -18,8 +20,11 @@
   },
   "homepage": "https://github.com/rinick/antd-mousedown-bug#readme",
   "dependencies": {
+    "@date-io/date-fns": "^2.4.0",
     "@material-ui/core": "^4.9.2",
+    "@material-ui/pickers": "^3.2.10",
     "antd": "^4.0.0-rc.4",
+    "date-fns": "^2.9.0",
     "parcel-bundler": "^1.12.4",
     "react": "^16.12.0",
     "react-dom": "^16.12.0"

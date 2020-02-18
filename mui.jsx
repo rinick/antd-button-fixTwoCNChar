@@ -1,6 +1,21 @@
 import React, {useCallback, useState} from 'react';
 import ReactDOM from 'react-dom';
-import {Radio, Checkbox, Select, Button, Input, Slider, DatePicker, Switch, Tooltip} from 'antd';
+import Button from "@material-ui/core/Button";
+import Select from "@material-ui/core/Select";
+import MenuItem from '@material-ui/core/MenuItem';
+import Checkbox from "@material-ui/core/Checkbox";
+import Input from "@material-ui/core/Input";
+import Slider from "@material-ui/core/Slider";
+import Switch from "@material-ui/core/Switch";
+import Tooltip from "@material-ui/core/Tooltip";
+import Radio from '@material-ui/core/Radio';
+import DateFnsUtils from '@date-io/date-fns';
+import {
+  MuiPickersUtilsProvider,
+  KeyboardDatePicker,
+} from '@material-ui/pickers';
+import RadioGroup from "@material-ui/core/RadioGroup";
+import FormControlLabel from "@material-ui/core/FormControlLabel";
 
 const callbacks = new Set();
 
@@ -20,17 +35,19 @@ const components = {
     <Button style={{width: 80}}>Button</Button>,
   select:
     <Select defaultValue="lucy" style={{width: 80}}>
-      <Select.Option value="jack">Jack</Select.Option>
-      <Select.Option value="lucy">Lucy</Select.Option>
+      <MenuItem value="jack">Jack</MenuItem>
+      <MenuItem value="lucy">Lucy</MenuItem>
     </Select>,
   checkbox:
-    <Checkbox style={{width: 80}}>Check</Checkbox>,
+    <FormControlLabel control={<Checkbox/>} label="Check"/>,
   input:
     <Input style={{width: 80}}/>,
   slider:
     <Slider style={{width: 80, display: 'inline-block'}}/>,
   date:
-    <DatePicker style={{width: 80}}/>,
+    <KeyboardDatePicker
+      format="fullDate"
+      style={{width: 80}}/>,
   switch:
     <Switch style={{width: 80}}/>,
   tooltip:
@@ -81,19 +98,21 @@ const App = (psops) => {
     <div style={{width: 810, margin: 20, position: 'absolute'}}>
       Select component to render asynchronously (
       from {lastComp} to {currentComp} : {changeEndTime - changeTime} ms )<br/>
-      <Radio.Group defaultValue='none' onChange={onChange}>
-        <Radio value='none'>None</Radio>
-        <Radio value='button'>Button</Radio>
-        <Radio value='select'>Select</Radio>
-        <Radio value='checkbox'>CheckBox</Radio>
-        <Radio value='input'>Input</Radio>
-        <Radio value='slider'>Slider</Radio>
-        <Radio value='date'>Date</Radio>
-        <Radio value='switch'>Switch</Radio>
-        <Radio value='tooltip'>Tooltip</Radio>
-      </Radio.Group>
+      <RadioGroup onChange={onChange} row>
+        <FormControlLabel value='none' control={<Radio/>} label="None"/>
+        <FormControlLabel value='button' control={<Radio/>} label="Button"/>
+        <FormControlLabel value='select' control={<Radio/>} label="Select"/>
+        <FormControlLabel value='checkbox' control={<Radio/>} label="CheckBox"/>
+        <FormControlLabel value='input' control={<Radio/>} label="Input"/>
+        <FormControlLabel value='slider' control={<Radio/>} label="Slider"/>
+        <FormControlLabel value='date' control={<Radio/>} label="Date"/>
+        <FormControlLabel value='switch' control={<Radio/>} label="Switch"/>
+        <FormControlLabel value='tooltip' control={<Radio/>} label="Tooltip"/>
+      </RadioGroup>
       <br/>
-      {children}
+      <MuiPickersUtilsProvider utils={DateFnsUtils}>
+        {children}
+      </MuiPickersUtilsProvider>
     </div>
   )
 };
